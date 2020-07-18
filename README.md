@@ -1,4 +1,5 @@
 # mysongs
+个人原创歌曲存档网站
 
 ## Project setup
 ```
@@ -28,6 +29,3 @@ yarn run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-
-# mySongs
-个人原创歌曲存档网站
