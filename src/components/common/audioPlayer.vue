@@ -27,9 +27,6 @@ export default {
             audio:''
         }
     },
-    mounted(){
-        this.audio=document.getElementById('player');
-    },
     watch:{
         playSrc(){
             this.changePlayState('加载中')
@@ -44,12 +41,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.audio-player {
-  // background-color:#229043;
-  // width:200px;
-  // height:50px;
-  // position: fixed;
-  // top:20px;
-  // left:50%;
-}
+
 </style>
