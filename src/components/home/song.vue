@@ -6,9 +6,11 @@
         <div class="sub-list" v-if="song.fileList && song.fileList.song">
           <p v-for="(s,i) in song.fileList.song" :key="i">
             <span
-              :class="{'active':active===s.src}"
+              :class="{'song-name':true,'active':active===s.src}"
               v-on:click="songClick(s)"
             >{{cutEndName(s.name)}}<i>（{{song.year}}）</i></span>
+            <i class="play-tips" v-show="active===s.src">{{playState}}</i>
+            <lyrics v-if="song.fileList && song.fileList.lyrics && song.fileList.lyrics[0]" :show="active===s.src" :lyricsUrl="song.fileList.lyrics[0]"></lyrics>
           </p>
         </div>
       </span>
@@ -18,9 +20,13 @@
 
 <script>
 import API from "@/api/api";
+import lyrics from "@/components/home/lyrics"
 export default {
   data() {
     return {};
+  },
+  components:{
+    lyrics
   },
   props: {
     song: {
@@ -42,6 +48,10 @@ export default {
     active: {
       type: String,
       default: ""
+    },
+    playState:{
+      type:String,
+      default:''
     }
   },
   computed: {
@@ -69,7 +79,6 @@ export default {
   },
   methods: {
     songClick(s) {
-      // this.active=s.src;
       this.setActive(s.src);
     },
     cutEndName(fileName) {
@@ -114,23 +123,34 @@ export default {
             width: 100%;
             overflow: hidden;
             padding-right: 10px;
-            > span {
+            .song-name {
               padding: 5px 0;
               display: block;
               float: left;
               line-height: 22px;
               cursor: pointer;
               &:hover {
-                color: #ff5900;
+                color: #229043;
               }
               &.active {
-                color: #ff5900;
+                color: #229043;
               }
               i{
                 font-style: normal;
                 font-size: 12px;
                 color:#ccc;
               }
+            }
+            .play-tips{
+              font-style: normal;
+              display:block;
+              height:33px;
+              width:40px;
+              float:left;
+              line-height: 22px;
+              font-size: 12px;
+              padding-top:7px;
+              color:#229043;
             }
           }
         }

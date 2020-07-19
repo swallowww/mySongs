@@ -11,6 +11,6 @@ export default {
 <style lang="less" scoped>
 .home-foot{
     width:100%;
-    height:40px;
+    // height:50px;
 }
 </style>
