@@ -1,7 +1,7 @@
 <template>
   <div class="audio-player">
     <audio
-      :src="playSrc"
+      :src="audioSrc"
       loop="loop"
       id="player"
       autoplay="autoplay"
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import API from "@/api/api";
 export default {
     props:{
         playSrc:{
@@ -20,6 +21,11 @@ export default {
         changePlayState:{
             type:Function,
             default:()=>{}
+        }
+    },
+    computed:{
+        audioSrc(){
+            return this.playSrc?API.hostName+'/'+this.playSrc:'';
         }
     },
     data(){

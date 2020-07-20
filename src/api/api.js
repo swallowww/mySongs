@@ -1,5 +1,6 @@
 const hostName = process.env.VUE_APP_FLAG == 'development' ? 'http://106.14.222.120' : '';
 const API = {
+    hostName: hostName,
     getMusicList: hostName + '/music.php',
     cutSongEnd: [
         'mp3', 'wav', 'flac',
